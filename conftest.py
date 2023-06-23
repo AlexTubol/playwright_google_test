@@ -1,16 +1,16 @@
 import pytest
-from playwright.sync_api import Playwright
+from playwright.sync_api import Playwright, Page
 
-from PageObject.models.main_page import MainPage
 from data_generation import generating_test_data
-from resources import SEARCH_TEXT, GOOGLE_URL, GOOGLE_TITLE
+from page.models.calculator import CalculatorSearchPage
+from page.models.main_page import MainPage
+from resources import SEARCH_TEXT
 
 
-@pytest.fixture(scope="function", autouse=True)
-def before_each_after_each(page):
-    page = MainPage(page)
-    page.go_to_google(GOOGLE_URL, GOOGLE_TITLE)
-    page.search_text(SEARCH_TEXT)
+@pytest.fixture(scope='function')
+def before_each_calculator_search_page(main_page):
+    main_page.go_to_page()
+    main_page.search_text(SEARCH_TEXT)
     yield
 
 
@@ -22,6 +22,16 @@ def page(playwright: Playwright):
     browser.close()
 
 
-@pytest.fixture(scope='class', params=generating_test_data())
+@pytest.fixture(scope='function', params=generating_test_data())
 def test_data(request):
     return request.param
+
+
+@pytest.fixture(scope="function")
+def main_page(page: Page) -> MainPage:
+    return MainPage(page)
+
+
+@pytest.fixture(scope="function")
+def calculator_search_page(page: Page) -> CalculatorSearchPage:
+    return CalculatorSearchPage(page)
