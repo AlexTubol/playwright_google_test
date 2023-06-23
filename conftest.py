@@ -2,7 +2,7 @@ import pytest
 from playwright.sync_api import Playwright, Page
 
 from data_generation import generating_test_data
-from page.models.calculator import CalculatorSearchPage
+from page.models.calculator_search_page import CalculatorSearchPage
 from page.models.main_page import MainPage
 from resources import SEARCH_TEXT
 

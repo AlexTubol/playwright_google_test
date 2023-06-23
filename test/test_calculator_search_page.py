@@ -1,7 +1,7 @@
 import pytest
 import allure
 
-from page.models.calculator import CalculatorSearchPage
+from page.models.calculator_search_page import CalculatorSearchPage
 
 
 @pytest.mark.usefixtures('before_each_calculator_search_page')
