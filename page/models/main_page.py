@@ -12,12 +12,12 @@ class MainPage(BasePage):
 
     def __init__(self, page: Page):
         super().__init__(page)
-        self.search_input = Input(page=page, locator=self.SEARCH_BOX, name="search_field")
+        self.search_input = Input(page=page, locator=self.SEARCH_BOX, name="search_field", name_page=self.name_page)
         self.url = GOOGLE_URL
         self.title = GOOGLE_TITLE
 
     @property
-    def type_page(self) -> str:
+    def name_page(self) -> str:
         return 'main page'
 
     def search_text(self, text: str):

@@ -14,11 +14,11 @@ class TestCalculatorSearchPage:
                               ("1-3=", "-2"),
                               ("1*1=", "1"),
                               ("10/2=", "5")])
-    def test_static_data_calculator(self, page, expression, result, calculator_search_page: CalculatorSearchPage):
+    def test_static_data_calculator(self, expression, result, calculator_search_page: CalculatorSearchPage):
         calculator_search_page.calculator.checking_the_calculator_result(expression=expression, result=result)
 
     @allure.feature('Calculator - arithmetic operators')
     @allure.story('Проверка выполнения сгенерериванных выражений')
     @allure.severity('critical')
-    def test_dynamic_data_calculator(self, page, test_data, calculator_search_page: CalculatorSearchPage):
+    def test_dynamic_data_calculator(self, test_data, calculator_search_page: CalculatorSearchPage):
         calculator_search_page.calculator.checking_the_calculator_result(expression=test_data[0], result=test_data[1])

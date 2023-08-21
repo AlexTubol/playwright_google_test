@@ -1,4 +1,3 @@
-"""Описание страницы калькулятора"""
 from playwright.sync_api import Page
 
 from components.elements.input import Input
@@ -7,8 +6,9 @@ from components.elements.input import Input
 class Calculator:
     CALCULATOR_FIELD = '//div[@class = "card-section"]//div[@role="presentation"]'
 
-    def __init__(self, page: Page) -> None:
-        self.calculator_field = Input(page=page, locator=self.CALCULATOR_FIELD, name="calculator_field")
+    def __init__(self, page: Page, name_page: str):
+        self.calculator_field = Input(
+            page=page, locator=self.CALCULATOR_FIELD, name="calculator_field", name_page=name_page)
 
     @property
     def type(self) -> str:
